@@ -32,6 +32,10 @@ defmodule NN.ListProbs do
     end
   end
 
+  @doc """
+    'at' allows us to extract the element located at a specific
+    element of the list. NB the list is 1-indexed
+  """
   def at(k, xs) when k === 1 do
     case xs do
       [] -> :none
@@ -46,13 +50,17 @@ defmodule NN.ListProbs do
     end
   end
 
-  defp tail_rec_len(xs, acc) do
-    case {xs, acc} do
-      {[], acc} -> acc
-      {[h | tail]} -> tail_rec_len(tail, acc + 1)
-    end
+  defp tail_rec_len([], acc) do
+    acc
   end
 
+  defp tail_rec_len([_ | rest], acc) do
+    tail_rec_len(rest, acc + 1)
+  end
+
+  @doc """
+    Computes the lenght of the given list
+  """
   def length(xs) do
     tail_rec_len(xs, 0)
   end
@@ -65,12 +73,12 @@ defmodule NN.ListProbs do
      reverse_helper([y | xs], ys)
   end
 
+  @doc """
+    Reverses the list provided.
+    For example reverse([1,2,3]) yields [3, 2, 1]
+  """
   def reverse(ys) do
     reverse_helper([], ys)
   end
-
-
-
-
 
 end

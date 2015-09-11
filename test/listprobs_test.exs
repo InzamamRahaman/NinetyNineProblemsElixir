@@ -29,4 +29,18 @@ defmodule NN.ListProbsTest do
     assert NN.ListProbs.at(3, @empty_list) == :none
   end
 
+  test "reverse reverses empty list properly" do
+    assert NN.ListProbs.reverse(@empty_list) == []
+  end
+
+  test "reverse reverses non-empty list properly" do
+    assert NN.ListProbs.reverse(@non_empty_list) == ["d", "c", "b", "a"]
+  end
+
+  test "lenght calculates list length properly" do
+    assert NN.ListProbs.length(@empty_list) == 0
+    assert NN.ListProbs.length(@non_empty_list) == 4 
+  end
+
+
 end
